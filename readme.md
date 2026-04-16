@@ -7,7 +7,6 @@ pip install pycryptodomex
 pip install pycryptodome-test-vectors
 python -m Cryptodome.SelfTest
 
-
 ## get into the virtual environment at any time 
 source venv/bin/activate
 
