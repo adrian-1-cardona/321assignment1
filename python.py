@@ -9,7 +9,7 @@ key = get_random_bytes(16)  # 128-bit key
 iv = get_random_bytes(16)   # 128-bit IV for CBC
 
 # Read the BMP file
-with open('mustang.bmp', 'rb') as f:
+with open('cp-logo.bmp', 'rb') as f:
     bmp_data = f.read()
 
 # Split header (first 54 bytes) from image data
@@ -23,5 +23,5 @@ cipher_ecb = AES.new(key, AES.MODE_ECB)
 ciphertext_ecb = cipher_ecb.encrypt(padded_image)
 
 # Write ECB output file (header + encrypted image)
-with open('mustang_ecb.bmp', 'wb') as f:
+with open('cp-logo_ecb.bmp', 'wb') as f:
     f.write(bmp_header + ciphertext_ecb)
