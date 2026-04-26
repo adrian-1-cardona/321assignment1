@@ -10,7 +10,7 @@ def main ():
     for filename in filesarray:
         with open(filename, 'rb') as f:
             bmp_data = f.read()
-        ##task 1 of doing this the ecb way , splitting the headers and all that fun stuff 
+        ##ecb way and output 
         #splitting the header file
         bmp_header = bmp_data[:54]
         image_data = bmp_data[54:]
