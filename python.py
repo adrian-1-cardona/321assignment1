@@ -14,7 +14,6 @@ def main ():
         #splitting the header file
         bmp_header = bmp_data[:54]
         image_data = bmp_data[54:]
-    
         padded_image = pad(image_data, AES.block_size)
         key = get_random_bytes(16)
         iv = get_random_bytes(16)
