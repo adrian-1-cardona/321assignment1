@@ -13,8 +13,22 @@ def submit(strinput):
     cipher = AES.new(key, AES.MODE_CBC, iv)
     return cipher.encrypt(padded)
  
-def verify(ciphertext):
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    padded = cipher.decrypt(ciphertext)
-    plaintext = unpad(padded, AES.block_size).decode()
-    return ";admin=true;" in plaintext
+def verify(uinput):
+    euserin = bytearray(euserin)
+    euserin[4] = xor(euserin[4], 0x63)
+    euserin[10] = xor(euserin[10], 0x65)
+    
+    euserin = bytes(euserin)
+    
+    mode = AES.new(key, AES.MODE_CBC, iv)
+    decryptedString = mode.decrypt(euserin)
+    
+    #ignore errors 
+    decryptedString = unpad(decryptedString, 16).decode(errors='ignore')
+    
+    return ";admin=true;" in decryptedString
+
+if __name__ == "__main__":
+    string = submit("XadminXtrue")
+    string = verify(string)
+    print(string)
