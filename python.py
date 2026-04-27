@@ -26,7 +26,6 @@ def main ():
         with open(ecb_output, 'wb') as f:
             f.write(bmp_header + ciphertext_ecb)
     
-        ##task2 is doing it the CBC method but with the XOR method 
         #cbc encryption and output
         cipher_cbc = AES.new(key, AES.MODE_ECB)
         ciphertext_cbc = b''
@@ -57,6 +56,5 @@ def main ():
         print("Key:", key.hex())
         print("IV:", iv.hex())
         
-           
 if __name__ == "__main__":     
     main()
