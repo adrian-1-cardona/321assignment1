@@ -26,8 +26,8 @@ def main ():
             f.write(bmp_header + ciphertext_ecb)
     
         #cbc encryption and output
-        cipher_cbc = AES.new(key, AES.MODE_ECB)
-        ciphertext_cbc = b''
+        cipher_cbc = AES.new(key, AES.MODE_CBC, iv)
+        ciphertext_cbc = cipher_cbc.encrypt(padded_image)
         preblock = iv
         ##block by block encryption here , so using a for loopo to go through each one, i guess theres other ways to do it 
         for i in range(0, len(padded_image), AES.block_size):
