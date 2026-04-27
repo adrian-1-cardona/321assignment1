@@ -12,7 +12,7 @@ def main ():
 def encryptbmpfile(filename):
     with open(filename, 'rb') as f:
         bmp_data = f.read()
-    #header for bmp file 
+    #header for bmp file and split the data 
     bmp_header = bmp_data[:54]
     image_data = bmp_data[54:]
     
