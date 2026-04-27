@@ -10,6 +10,9 @@ python -m Cryptodome.SelfTest
 ## get into the virtual environment at any time 
 source venv/bin/activate
 
+## to run just do this 
+python3 python.py
+
 ## and to leave it just 
 deactivate
 
