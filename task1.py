@@ -22,14 +22,14 @@ def encryptbmpfile(filename):
     iv = get_random_bytes(16)
     padded_image = pad(image_data, AES.block_size)
     
-    # ECB Encryption
+    #ecb encryption
     cipher_ecb = AES.new(key, AES.MODE_ECB)
     ciphertext_ecb = cipher_ecb.encrypt(padded_image)
     ecb_output = f"ecb_{filename}"
     with open(ecb_output, 'wb') as f:
         f.write(bmp_header + ciphertext_ecb)
     
-    # CBC Encryption
+    #cbc Encryption
     cipher_cbc = AES.new(key, AES.MODE_CBC, iv)
     ciphertext_cbc = cipher_cbc.encrypt(padded_image)
     cbc_output = f"cbc_{filename}"
