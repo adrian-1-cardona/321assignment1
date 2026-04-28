@@ -5,7 +5,8 @@ from Crypto.Util.Padding import pad, unpad
  
 key = get_random_bytes(16)
 iv = get_random_bytes(16)
- 
+
+#submit function that takes in the user input and does the entire replace thing from the instrcutions
 def submit(strinput):
     strinput = strinput.replace(';', '%3b').replace('=', '%3d')
     plaintext = "userid=456;userdata=" + strinput + ";session-id=31337"
@@ -13,17 +14,17 @@ def submit(strinput):
     cipher = AES.new(key, AES.MODE_CBC, iv)
     return cipher.encrypt(padded)
  
+ #verify function that takes in the encrypted user input and does the entire decryption and unpad thing from the instructions
 def verify(uinput):
-    euserin = bytearray(euserin)
-    euserin[4] = xor(euserin[4], 0x63)
-    euserin[10] = xor(euserin[10], 0x65)
+    uinput = bytearray(uinput)
+    uinput[4] = xor(uinput[4], 0x63)
+    uinput[10] = xor(uinput[10], 0x65)
     
-    euserin = bytes(euserin)
+    uinput = bytes(uinput)
     
     mode = AES.new(key, AES.MODE_CBC, iv)
-    decryptedString = mode.decrypt(euserin)
+    decryptedString = mode.decrypt(uinput)
     
-    #ignore errors 
     decryptedString = unpad(decryptedString, 16).decode(errors='ignore')
     
     return ";admin=true;" in decryptedString
